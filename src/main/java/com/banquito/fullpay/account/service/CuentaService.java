@@ -38,7 +38,14 @@ public class CuentaService {
     }
 
     public void deleteCuenta(Long id){
-        this.cuentaRepository.deleteById(id);
+        Optional<Cuenta> cuenta = this.cuentaRepository.findById(id);
+        if (cuenta.isPresent()){
+            Cuenta cuentaOpt = cuenta.get();
+            cuentaOpt.setEstado("INA");
+            this.cuentaRepository.save(cuentaOpt);
+        }else{
+            throw new RuntimeException("No existe la cuenta con el id: " + id);
+        }
     }
 
     public List<Cuenta> obtainAll(){

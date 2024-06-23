@@ -16,25 +16,33 @@ public class EmpresaService {
         this.empresaRepository = empresaRepository;
     }
 
-    public List<Empresa> obtainAllEmpresa(){
+    public List<Empresa> obtainAllEmpresa() {
         return empresaRepository.findAll();
     }
 
-    public Empresa obtainEmpresaById(Long id){ 
+    public Empresa obtainEmpresaById(Long id) {
         Optional<Empresa> empresaOpt = this.empresaRepository.findById(id);
-        if (empresaOpt.isPresent()){
+        if (empresaOpt.isPresent()) {
             return empresaOpt.get();
-        }else{
+        } else {
             throw new RuntimeException("No existe la empresa con el id: " + id);
         }
-            
+
     }
 
-    public Empresa CreateEmpresa(Empresa empresa){
+    public Empresa CreateEmpresa(Empresa empresa) {
         return empresaRepository.save(empresa);
     }
 
-    
-
+    public void deleteEmpresa(Long id) {
+        Optional<Empresa> empresa = this.empresaRepository.findById(id);
+        if (empresa.isPresent()) {
+            Empresa empresaOpt = empresa.get();
+            empresaOpt.setEstado("INA");
+            empresaRepository.save(empresaOpt);
+        } else {
+            throw new RuntimeException("No existe la empresa con el id: " + id);
+        }
+    }
 
 }

@@ -52,7 +52,7 @@ public class CuentaController {
     @DeleteMapping
     public ResponseEntity<Void> deleteCuenta(@PathVariable Long id){
         cuentaService.deleteCuenta(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.notFound().build();
     }
 
 }
