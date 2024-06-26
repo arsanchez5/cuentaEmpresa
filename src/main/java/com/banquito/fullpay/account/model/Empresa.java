@@ -18,7 +18,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "COR_EMPRESA")
+@Table(name = "COR_EMPRESA", schema = "cobrosrecaudos")
 public class Empresa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

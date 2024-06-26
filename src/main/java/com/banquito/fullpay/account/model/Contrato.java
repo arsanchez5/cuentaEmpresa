@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "COR_CONTRATO")
+@Table(name = "COR_CONTRATO", schema = "cobrosrecaudos")
 public class Contrato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

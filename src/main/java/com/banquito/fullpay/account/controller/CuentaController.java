@@ -43,7 +43,7 @@ public class CuentaController {
         return ResponseEntity.ok(cuentas.stream().map(c -> this.cuentaMapper.toDTO(c)).collect(Collectors.toList()));
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<CuentaDTO> createCuenta(@RequestBody CuentaDTO dto){
         CuentaDTO cuentaCreated = cuentaService.saveCuenta(dto);
         return ResponseEntity.ok(cuentaCreated);
