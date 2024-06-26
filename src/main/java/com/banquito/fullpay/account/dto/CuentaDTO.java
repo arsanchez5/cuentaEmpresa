@@ -9,8 +9,8 @@ import lombok.Value;
 @Value
 @Builder
 public class CuentaDTO {
-    private Long id;
-    private Long codEmpresa;
+    private Integer id;
+    private Integer codEmpresa;
     private String numCuenta;
     private String tipoCuenta;
     private BigDecimal saldoDisponible;

@@ -23,7 +23,7 @@ public class EmpresaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Empresa> getEmpresaById(@PathVariable Long id){
+    public ResponseEntity<Empresa> getEmpresaById(@PathVariable Integer id){
         try {
             Empresa empresa = empresaService.obtainEmpresaById(id);
             return ResponseEntity.ok(empresa);
@@ -45,7 +45,7 @@ public class EmpresaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEmpresa(@PathVariable Long id){
+    public ResponseEntity<Void> deleteEmpresa(@PathVariable Integer id){
         empresaService.deleteEmpresa(id);
         return ResponseEntity.noContent().build();
     }

@@ -23,7 +23,7 @@ public class Empresa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_EMPRESA", nullable = false)
-    private Long id;
+    private Integer id;
     @Column(name = "NOMBRE_COMERCIAL", length = 50, nullable = false)
     private String nombreComercial;
     @Column(name = "RAZON_SOCIAL", length = 50, nullable = false)
@@ -33,7 +33,7 @@ public class Empresa implements Serializable {
     @Column(name = "ESTADO", length = 3, nullable = false)
     private String estado;
 
-    public Empresa(Long id) {
+    public Empresa(Integer id) {
         this.id = id;
     }
 

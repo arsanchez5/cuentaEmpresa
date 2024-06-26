@@ -20,7 +20,7 @@ public class EmpresaService {
         return empresaRepository.findAll();
     }
 
-    public Empresa obtainEmpresaById(Long id) {
+    public Empresa obtainEmpresaById(Integer id) {
         Optional<Empresa> empresaOpt = this.empresaRepository.findById(id);
         if (empresaOpt.isPresent()) {
             return empresaOpt.get();
@@ -34,7 +34,7 @@ public class EmpresaService {
         return empresaRepository.save(empresa);
     }
 
-    public void deleteEmpresa(Long id) {
+    public void deleteEmpresa(Integer id) {
         Optional<Empresa> empresa = this.empresaRepository.findById(id);
         if (empresa.isPresent()) {
             Empresa empresaOpt = empresa.get();

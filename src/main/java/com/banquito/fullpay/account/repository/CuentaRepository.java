@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.banquito.fullpay.account.model.Cuenta;
 
-public interface CuentaRepository extends JpaRepository<Cuenta, Long> {
+public interface CuentaRepository extends JpaRepository<Cuenta, Integer> {
     
 }

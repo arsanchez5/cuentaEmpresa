@@ -29,7 +29,7 @@ public class CuentaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CuentaDTO> getCuentaById(@PathVariable Long id){
+    public ResponseEntity<CuentaDTO> getCuentaById(@PathVariable Integer id){
         try {
             return ResponseEntity.ok(this.cuentaMapper.toDTO(this.cuentaService.obtainCuentaById(id)));
         } catch (RuntimeException rte) {
@@ -50,7 +50,7 @@ public class CuentaController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteCuenta(@PathVariable Long id){
+    public ResponseEntity<Void> deleteCuenta(@PathVariable Integer id){
         cuentaService.deleteCuenta(id);
         return ResponseEntity.notFound().build();
     }

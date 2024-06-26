@@ -1,7 +1,6 @@
 package com.banquito.fullpay.account.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -17,51 +16,37 @@ import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
-@Table(name = "COR_CUENTA")
-public class Cuenta implements Serializable {
+@Table(name = "COR_CONTRATO")
+public class Contrato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COD_CUENTA", nullable = false)
-    private Integer id;
+    @Column(name = "COD_CONTRATO", nullable = false)
+    private Integer codContrato;
     @Column(name = "COD_EMPRESA", nullable = false)
     private Integer codEmpresa;
-    @Column(name = "NUMERO_CUENTA", length = 10, nullable = false)
-    private String numCuenta;
-    @Column(name = "TIPO_CUENTA", length = 3, nullable = false)
-    private String tipoCuenta;
-    @Column(name = "SALDO_DISPONIBLE", precision = 17, scale = 2, nullable = false)
-    private BigDecimal saldoDisponible;
-    @Column(name = "SALDO_CONTABLE", precision = 17, scale = 2, nullable = false)
-    private BigDecimal saldoContable;
-    @Column(name = "ESTADO", length = 3, nullable = false)
+    @Column(name = "ESTADO", nullable = false, length = 3)
     private String estado;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "FECHA_CREACION")
-    private LocalDateTime fechaCreacion;
+    @Column(name = "FECHA_INICIO")
+    private LocalDateTime fechaInicio;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "FECHA_ULT_MODIFICACION", nullable = false)
-    private LocalDateTime fechaUltModificacion;
+    @Column(name = "FECHA_FIN")
+    private LocalDateTime fechaFin;
 
     @ManyToOne
     @JoinColumn(name = "COD_EMPRESA", referencedColumnName = "COD_EMPRESA", insertable = false, updatable = false)
     private Empresa empresa;
 
-    public Cuenta(Integer id) {
-        this.id = id;
-    }
-
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((codContrato == null) ? 0 : codContrato.hashCode());
         return result;
     }
 
@@ -73,11 +58,11 @@ public class Cuenta implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Cuenta other = (Cuenta) obj;
-        if (id == null) {
-            if (other.id != null)
+        Contrato other = (Contrato) obj;
+        if (codContrato == null) {
+            if (other.codContrato != null)
                 return false;
-        } else if (!id.equals(other.id))
+        } else if (!codContrato.equals(other.codContrato))
             return false;
         return true;
     }

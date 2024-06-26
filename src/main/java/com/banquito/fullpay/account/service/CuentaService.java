@@ -21,7 +21,7 @@ public class CuentaService {
         this.cuentaMapper = cuentaMapper;
     }
 
-    public Cuenta obtainCuentaById(Long id){
+    public Cuenta obtainCuentaById(Integer id){
         Optional<Cuenta> cuentaOpt = this.cuentaRepository.findById(id);
         if (cuentaOpt.isPresent()){
             return cuentaOpt.get();
@@ -37,7 +37,7 @@ public class CuentaService {
         return this.cuentaMapper.toDTO(cuentaCreated);
     }
 
-    public void deleteCuenta(Long id){
+    public void deleteCuenta(Integer id){
         Optional<Cuenta> cuenta = this.cuentaRepository.findById(id);
         if (cuenta.isPresent()){
             Cuenta cuentaOpt = cuenta.get();
